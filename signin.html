@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Netflix Sign In</title>
+    <link rel="stylesheet" type="text/css" href="style1.css" />
+    <style>
+      /* Add your custom styles here */
+    </style>
+    <script>
+      function signIn(event) {
+        // Check if the Enter key is pressed (keyCode 13)
+        if (event.keyCode === 13) {
+          // Prevent the default form submission
+          event.preventDefault();
+
+          // Get the email and password values
+          var email = document.getElementById("email").value;
+          var password = document.getElementById("password").value;
+
+          // Perform validation or authentication if needed
+          // ...
+
+          // Redirect to the main home page
+          window.location.href = "home.html";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img src="download.png" alt="Netflix Logo" />
+      </nav>
+    </header>
+
+    <section id="signin">
+      <div class="container">
+        <h2>Sign In to Netflix</h2>
+        <form>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            required
+            onkeydown="signIn(event)"
+          />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+            onkeydown="signIn(event)"
+          />
+          <button type="button" onclick="signIn(event)">Sign In</button>
+        </form>
+        <p>New to Netflix? <a href="signup.html">Sign up now</a>.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2023 Netflix. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

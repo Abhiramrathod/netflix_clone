@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Netflix Shows</title>
+    <link rel="stylesheet" type="text/css" href="style5.css" />
+  </head>
+  <header>
+    <nav>
+      <img src="download.png" alt="Netflix Logo" />
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="shows.html">Shows</a></li>
+        <li><a href="search.html">Search</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="search">
+    <div class="container">
+      <div class="search-bar">
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search..."
+        />
+        <button id="search-button" class="search-button">Search</button>
+      </div>
+      <div id="search-results" class="search-results">
+        <!-- Search results go here -->
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Get the input and results elements
+    const searchInput = document.getElementById("search-input");
+    const searchResults = document.getElementById("search-results");
+
+    // Event listener for search button click
+    document
+      .getElementById("search-button")
+      .addEventListener("click", performSearch);
+
+    // Event listener for pressing Enter key in the search input
+    searchInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        performSearch();
+      }
+    });
+
+    // Function to perform the search
+    function performSearch() {
+      // Get the search query
+      const query = searchInput.value;
+
+      // Clear previous search results
+      searchResults.innerHTML = "";
+
+      // Perform search and display results
+      // Replace this with your own search implementation
+      const results = search(query);
+
+      if (results.length > 0) {
+        results.forEach(function (result) {
+          const item = document.createElement("div");
+          item.textContent = result;
+          searchResults.appendChild(item);
+        });
+      } else {
+        const noResults = document.createElement("p");
+        noResults.textContent = "No results found.";
+        searchResults.appendChild(noResults);
+      }
+    }
+
+    // Function to simulate search results (replace with your own implementation)
+    function search(query) {
+      const results = [];
+
+      // Simulating search results
+      if (query.includes("movie")) {
+        results.push("Movie 1", "Movie 2", "Movie 3");
+      } else if (query.includes("series")) {
+        results.push("Series 1", "Series 2", "Series 3");
+      }
+
+      return results;
+    }
+  </script>
+</html>
